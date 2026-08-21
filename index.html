@@ -62,6 +62,10 @@
 <script>
   const dominio=document.querySelector("#dominio");
   const hosting=document.querySelector("#hosting");
+  const basedatos=document.querySelector("#basedatos");
+  //Seo
+  //paginas extra
+  //
   var total=0;
 
   //Event listener
@@ -76,6 +80,8 @@
     total -= parseInt(hosting.dataset.precio);
     console.log("Hosting no seleccionado, su total es de " + total);
   }
+  //total
+  document.getElementById("total").textContent = total;
 }); 
 
   //Dominio
@@ -104,6 +110,5 @@ dominio.addEventListener("click", function(){
   }
 
 </script>
-
 </body>
 </html>
