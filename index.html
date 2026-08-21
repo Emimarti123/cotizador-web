@@ -47,6 +47,18 @@
     <input class="form-check-input" type="checkbox" id="basedatos" name="basedatos" data-precio="7000">
   </label>
   <br><br>
+   
+  <label for="SEO">SEO:
+    <input class="form-check-input" type="checkbox" id="SEO" name="SEO" data-precio="6800">
+    
+  </label>
+  <br><br>
+
+   <label for="extrapages">Paginas extra:
+    <input class="form-check-input" type="checkbox" id="extrapages" name="extrapages" data-precio="600">
+    
+  </label>
+  <br><br>
 
   <button type="button" id="btnCalcular">Calcular cotizacion</button>
   <button type="button" id="btnLimpiar">Limpiar</button>
@@ -63,8 +75,8 @@
   const dominio=document.querySelector("#dominio");
   const hosting=document.querySelector("#hosting");
   const basedatos=document.querySelector("#basedatos");
-  //Seo
-  //paginas extra
+  const SEO=document.querySelector("#SEO");
+  const extrapages=document.querySelector("#extrapages")
   //
   var total=0;
 
@@ -77,25 +89,90 @@
     total += parseInt(hosting.dataset.precio);
     console.log("Hosting seleccionado, su total es de " +total);
   }else{
-    total -= parseInt(hosting.dataset.precio);
+    if(total - parseInt(hosting.dataset.precio) < 0){
+      total = 0;
+    }else{
+      total -= parseInt(hosting.dataset.precio);
+    }
     console.log("Hosting no seleccionado, su total es de " + total);
   }
   //total
-  document.getElementById("total").textContent = total;
+  document.getElementById("resultado").textContent = total;
 }); 
 
   //Dominio
-
-dominio.addEventListener("click", function(){
-  if(dominio.checked){
-    console.log("Dominio seleccionado");
+  dominio.addEventListener("click", function(){
+  
+    if(dominio.checked){
+    total += parseInt(dominio.dataset.precio);
+    console.log("Dominio seleccionado, su total es de " +total);
   }else{
-    console.log("Dominio no seleccionado");
+    if(total - parseInt(dominio.dataset.precio) < 0){
+      total = 0;
+    }else{
+      total -= parseInt(dominio.dataset.precio);
+    }
+    console.log("Dominio no seleccionado, su total es de " + total);
   }
-}); 
+  //total
+  document.getElementById("resultado").textContent = total;
+});
+
+
 //Base de datos
+  basedatos.addEventListener("click", function(){
+  
+    if(basedatos.checked){
+    total += parseInt(basedatos.dataset.precio);
+    console.log("Base de datos seleccionada, su total es de " +total);
+  }else{
+    if(total - parseInt(basedatos.dataset.precio) < 0){
+      total = 0;
+    }else{
+      total -= parseInt(basedatos.dataset.precio);
+    }
+    console.log("Base de datos no seleccionada, su total es de " + total);
+  }
+  //total
+  document.getElementById("resultado").textContent = total;
+});
 
 
+//SEO
+  SEO.addEventListener("click", function(){
+  
+    if(SEO.checked){
+    total += parseInt(SEO.dataset.precio);
+    console.log("SEO seleccionado, su total es de " +total);
+  }else{
+    if(total - parseInt(SEO.dataset.precio) < 0){
+      total = 0;
+    }else{
+      total -= parseInt(SEO.dataset.precio);
+    }
+    console.log("SEO no seleccionado, su total es de " + total);
+  }
+  //total
+  document.getElementById("resultado").textContent = total;
+});
+
+//Extra pages
+  extrapages.addEventListener("click", function(){
+  
+    if(extrapages.checked){
+    total += parseInt(extrapages.dataset.precio);
+    console.log("Paginas extra seleccionadas, su total es de " +total);
+  }else{
+    if(total - parseInt(extrapages.dataset.precio) < 0){
+      total = 0;
+    }else{
+      total -= parseInt(extrapages.dataset.precio);
+    }
+    console.log("Paginas extra no seleccionadas, su total es de " + total);
+  }
+  //total
+  document.getElementById("resultado").textContent = total;
+});
 
 
 
