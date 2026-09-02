@@ -9,22 +9,19 @@
 <body>
   
   <main>
-    <div class="window">
+    <button type="button" id="btnPopUp">Pop Up</button>
+
+    <div class="window not-show">
       <div class="windowheader"> 
         <p>Titulo</p>
-
       </div>
 
       <div class="windowcontent">
-
           <p>Error</p>
-
-          <button>
+          <button id="btnCerrarError">
             ni modo
           </button>
       </div>
-
-
     </div>
   </main>
 
@@ -199,18 +196,29 @@
   document.getElementById("resultado").textContent = total;
 });
 
+console.log(dominio.dataset + "," + hosting.dataset.precio);
+console.log(Number(dominio.dataset.precio) + Number(hosting.dataset.precio));
 
+if(hosting.checked){
+  console.log("Hosting seleccionado");
+}else{
+  console.log("Hosting no seleccionado");
+}
 
-  
-  console.log(dominio.dataset + "," + hosting.dataset.precio);
-  console.log(Number(dominio.dataset.precio) + Number(hosting.dataset.precio));
+// Pop Up: abrir y cerrar ventana
+const btnPopUp = document.querySelector("#btnPopUp");
+const btnCerrarError = document.querySelector("#btnCerrarError");
+const ventanaError = document.querySelector(".window");
 
-  if(hosting.checked){
-    console.log("Hosting seleccionado");
-  }else{
-    console.log("Hosting no seleccionado");
-  }
+btnPopUp.addEventListener("click", function(){
+  ventanaError.classList.remove("not-show");
+  ventanaError.classList.add("show");
+});
 
+btnCerrarError.addEventListener("click", function(){
+  ventanaError.classList.remove("show");
+  ventanaError.classList.add("not-show");
+});
 </script>
 </body>
 </html>
